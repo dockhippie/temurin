@@ -1,0 +1,16 @@
+FROM webhippie/ubuntu:20.04-arm64@sha256:cfbe04e70b0ba01cb510e4acb7c221d5475f9389d6e74d4e007bb74553ccbb1a
+
+WORKDIR /srv/app
+
+RUN apt-get update && \
+  apt-get install -y lsb-release gnupg2 && \
+  curl -sSL https://packages.adoptium.net/artifactory/api/gpg/key/public | apt-key add - && \
+  echo "deb https://packages.adoptium.net/artifactory/deb $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/temurin.list && \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y temurin-17-jdk libatomic1 && \
+  apt-get purge -y lsb-release gnupg2 && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+
+COPY ./overlay /
