@@ -24,10 +24,6 @@ jobs:
             tag: 17
             arm64: true
             arm: true
-          - folder: v16
-            tag: 16
-            arm64: true
-            arm: true
           - folder: v11
             tag: 11
             arm64: true
