@@ -1,0 +1,17 @@
+FROM ghcr.io/dockhippie/ubuntu:22.04-amd64@sha256:ecb3cd9e2901d7eb4f9e3bbbfcc96dac2eaea906c3b93c3c97a1269c5bd1416d
+
+WORKDIR /srv/app
+
+RUN apt-get update && \
+  apt-get install -y lsb-release gnupg2 && \
+  curl -sSL https://packages.adoptium.net/artifactory/api/gpg/key/public | apt-key add - && \
+  echo "deb https://packages.adoptium.net/artifactory/deb $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/temurin.list && \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y temurin-20-jdk libatomic1 ca-certificates ca-certificates-java && \
+  ln -sf /etc/ssl/certs/java/cacerts /etc/ssl/certs/adoptium/cacerts && \
+  apt-get purge -y lsb-release gnupg2 && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+
+COPY ./overlay /
