@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/ubuntu:22.04-arm@sha256:4db43291a33f76c574accff0cf2b8aa468d13eb2a382a2144f2e07d85a629cf3
+FROM ghcr.io/dockhippie/ubuntu:22.04-arm@sha256:88266ff5b5be0889562b5e6d53369ab2278b27245e1993c7fbb69d6bdb83137c
 
 WORKDIR /srv/app
 
