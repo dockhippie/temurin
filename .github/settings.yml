@@ -1,7 +1,7 @@
 ---
 repository:
   name: temurin
-  description: Docker images for temurin
+  description: Docker images for Temurin
   topics: docker, image
 
   private: false
