@@ -136,7 +136,7 @@ jobs:
       - name: Push manifests
         run: |
           repos=("webhippie/temurin:21" "quay.io/webhippie/temurin:21" "ghcr.io/dockhippie/temurin:21")
-          archs=("amd64" "arm64" "arm")
+          archs=("amd64" "arm64")
 
           retry() {
             local max=5 delay=10
